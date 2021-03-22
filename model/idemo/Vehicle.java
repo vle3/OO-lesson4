@@ -1,6 +1,6 @@
 package model.idemo;
 
-public class Vehicle
+public abstract class Vehicle implements ISound
 {
     private int x;
     private int y;
