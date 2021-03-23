@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.IDemoEventListener;
 import model.idemo.Airplane;
 import model.idemo.Bird;
 import model.idemo.Car;
@@ -39,6 +40,17 @@ public class IDemoPanel
         cp.add(BorderLayout.SOUTH, southPanel);
 
         populatePicture();
+
+        IDemoEventListener listener = new IDemoEventListener(this);
+        canvas.addMouseListener(listener);
+        canvas.addKeyListener(listener);
+        canvas.requestFocusInWindow();
+        canvas.setFocusable(true);
+
+        //setFocusable config
+        quitButton.setFocusable(false);
+
+        quitButton.addActionListener(listener);
     }
 
     private void populatePicture()
@@ -56,5 +68,15 @@ public class IDemoPanel
         var v4 = new Dog(50, 150, "Bulldog", 3, "white");
         pics.add(v4);
         v4.setImage(ImageStore.gi);
+    }
+
+    public IDemoCanvas getCanvas() {
+        return canvas;
+    }
+    public JButton getQuitButton() {
+        return quitButton;
+    }
+    public JFrame getWindow() {
+        return window;
     }
 }

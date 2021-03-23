@@ -1,6 +1,7 @@
 package model.idemo;
 
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
 
 public abstract class Animal implements ISound, IRender
 {
@@ -45,5 +46,18 @@ public abstract class Animal implements ISound, IRender
     public String toString()
     {
         return "Animal at (" + x + ", " + y + ") name = "+ name + ", age = " + age;
+    }
+
+    @Override
+    public Rectangle getBoundingbox()
+    {
+        return new Rectangle(x,y,image.getWidth(),image.getHeight());
+    }
+
+    @Override
+    public void translate(int dx, int dy)
+    {
+        x += dx;
+        y += dy;
     }
 }
