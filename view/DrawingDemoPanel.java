@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import controller.ShapeDemoListener;
+
 
 public class DrawingDemoPanel 
 {
@@ -100,6 +102,16 @@ public class DrawingDemoPanel
         buttonPanel.add(showOrderButton);
         buttonPanel.add(clearButton);
         buttonPanel.add(exitButton);
+
+        ShapeDemoListener listener = new ShapeDemoListener(this);
+        canvas.addMouseListener(listener);
+        clearButton.addActionListener(listener);
+        exitButton.addActionListener(listener);
+        showOrderButton.addActionListener(listener);
+        showAllButton.addActionListener(listener);
+        sortXButton.addActionListener(listener);
+        sortYButton.addActionListener(listener);
+        
 
     }
 

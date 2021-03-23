@@ -16,14 +16,13 @@ public class DrawingDemoCanvas extends JPanel
 {
     private DrawingDemoPanel panel; 
     ArrayList<IShapeDraw> shapes = new ArrayList<>();
+    private int singleStepIndex = -1;
 
     public DrawingDemoCanvas(DrawingDemoPanel panel)
     {
         this.panel = panel;
         setBackground(Color.black);
         setPreferredSize(new Dimension(500, 400));
-
-        // testRendering();
     }
 
     @Override
@@ -32,16 +31,41 @@ public class DrawingDemoCanvas extends JPanel
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        for(var s: shapes)
+        if(singleStepIndex >= 0)
         {
-            s.render(g2);
+            for(int i = 0 ; i <= singleStepIndex; i++)
+            {
+                if(singleStepIndex < shapes.size())
+                    shapes.get(i).render(g2);
+            }
+        }
+        else
+        {
+            for(var s: shapes)
+            {
+                s.render(g2);
+            }
+        }
+
+        
+    }
+
+    public ArrayList<IShapeDraw> getShapes() {
+        return shapes;
+    }
+
+    public void incrementSingleStepIndex() {
+        if(shapes.size() == 0) return;
+
+        ++singleStepIndex;
+        if(singleStepIndex == shapes.size())
+        {
+            singleStepIndex = 0;
         }
     }
 
-    private void testRendering()
-    {
-        shapes.add(new Circle(50, 50, 50, Color.yellow, true));
-        shapes.add(new Rectangle(200, 200, 100, 100, Color.white, true));
-        shapes.add(new Triangle(100, 100, 50, Color.red, true));
+    public void setSingleStepIndex(int singleStepIndex) {
+        this.singleStepIndex = singleStepIndex;
     }
+
 }
