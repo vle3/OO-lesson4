@@ -15,12 +15,10 @@ public class ImageStore
     public static BufferedImage gi;    
 
     static{
-        // String cwd = System.getProperty("user.dir");
-        // System.out.println("cwd: " + cwd + "\n");
+        gi = readImage("model/images/gi.jpg", 70, 50);
         airplane = readImage("model/images/airplane.jfif", 80, 60);
-        airplane = readImage("model/images/.car.jfif", 70, 50);
-        airplane = readImage("model/images/gi.jpg", 70, 50);
-        airplane = readImage("model/images/eagle.jpg", 70, 50);
+        car = readImage("model/images/car.jfif", 70, 50);
+        eagle = readImage("model/images/eagle.jpg", 70, 50);
     }
 
     public static BufferedImage readImage(String path, int width, int height)

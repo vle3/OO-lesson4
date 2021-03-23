@@ -1,5 +1,7 @@
 package model.idemo;
 
+import java.awt.Graphics2D;
+
 public class Bird extends Animal
 {
     private int wingSpan;
@@ -23,5 +25,10 @@ public class Bird extends Animal
     @Override
     public String getSound() {
         return "[Bird] chirrrrrrrrrr r ~~~~~ ing";
+    }
+
+    @Override
+    public void render(Graphics2D g2) {
+        g2.drawImage(getImage(), null, getX(), getY());
     }
 }

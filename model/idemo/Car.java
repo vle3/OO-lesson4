@@ -1,5 +1,9 @@
 package model.idemo;
 
+import java.awt.Graphics2D;
+
+import javax.security.auth.x500.X500Principal;
+
 public class Car extends Vehicle 
 {
     public String type;
@@ -22,6 +26,11 @@ public class Car extends Vehicle
     @Override
     public String getSound() {
         return "[Car] Vrrrrrr ~~~~~~~ oooooooooooo m";
+    }
+
+    @Override
+    public void render(Graphics2D g2) {
+        g2.drawImage(getImage(), null, getX() , getY());        
     }
     
 }

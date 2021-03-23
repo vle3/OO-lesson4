@@ -1,11 +1,14 @@
 package model.idemo;
 
-public abstract class Vehicle implements ISound
+import java.awt.image.BufferedImage;
+
+public abstract class Vehicle implements ISound, IRender
 {
     private int x;
     private int y;
     private String make;
     private double price;
+    private BufferedImage image;
 
     public Vehicle(int x, int y , String make, double price)
     {
@@ -26,6 +29,12 @@ public abstract class Vehicle implements ISound
     }
     public double getPrice() {
         return price;
+    }
+    public BufferedImage getImage() {
+        return image;
+    }
+    public void setImage(BufferedImage image) {
+        this.image = image;
     }
 
     @Override 

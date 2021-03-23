@@ -3,16 +3,18 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+import model.idemo.IRender;
 import model.images.ImageStore;
-
 
 public class IDemoCanvas extends JPanel
 {
     private IDemoPanel panel ;
+    private ArrayList<IRender> pictures = new ArrayList<>();
 
     public IDemoCanvas(IDemoPanel panel)
     {
@@ -27,6 +29,14 @@ public class IDemoCanvas extends JPanel
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(ImageStore.car, null, 50, 50);
+
+        for(var p : pictures)
+        {
+            p.render(g2);
+        }
+    }
+
+    public ArrayList<IRender> getPictures() {
+        return pictures;
     }
 }
